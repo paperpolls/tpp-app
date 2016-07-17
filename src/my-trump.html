@@ -12,56 +12,288 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-trump">
 
-  <template>
+    <template>
 
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-      .circle {
-        display: inline-block;
-        height: 64px;
-        width: 64px;
-        border-radius: 50%;
-        background: #ff0000;
-        line-height: 64px;
-        font-size: 30px;
-        color: #fff;
-        text-align: center;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
-    </style>
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
+            
+            .card {
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                margin: 24px;
+                border-radius: 5px;
+                background-color: #fff;
+                color: #757575;
+            }
+            
+            .circle {
+                display: inline-block;
+                height: 64px;
+                width: 64px;
+                border-radius: 50%;
+                background: #ff0000;
+                line-height: 64px;
+                font-size: 30px;
+                color: #fff;
+                text-align: center;
+            }
+            
+            h1 {
+                font-size: 22px;
+                margin: 16px 0;
+                color: #212121;
+            }
+            
+            @import url(http://fonts.googleapis.com/css?family=Roboto:400);
+            html {
+                height: 100%;
+                width: 100%;
+                font-family: 'Roboto', sans-serif;
+            }
+            
+            body {
+                background-size: cover;
+                text-align: center;
+            }
+            
+            img {
+                position: relative;
+                -webkit-user-select: none;
+                display: block;
+                margin: auto;
+                width: inherit;
+                height: inherit;
+                opacity: .60;
+            }
+            
+            .paper img {
+                height: 85%;
+                width: 85%;
+            }
+            
+            .wrapper {
+                display: inline-flex;
+                text-align: center;
+                position: inherit;
+                margin: auto;
+                padding: 40px;
+                width: 340px;
+                height: 420px;
+            }
+            
+            .toiletroll {
+                position: relative;
+                width: 300px;
+                height: 240px;
+            }
+            
+            .roll {
+                background: #ffcccc url("https://raw.githubusercontent.com/the872/tvc2016/gh-pages/crissxcross.png");
+                background-size: cover;
+            }
+            
+            .roll {
+                position: absolute;
+                z-index: 2;
+                width: 300px;
+                height: 240px;
+                border-radius: 15% 0% 0% 15% / 50% 0% 0% 50%;
+                box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5), inset 0 5px 10px rgba(0, 0, 0, 0.3);
+                /* W3C */
+                background-size: 300px 240px;
+                -webkit-animation: move-roll 1.06667s linear infinite;
+                animation: move-roll 1.06667s linear infinite;
+            }
+            
+            .roll:before {
+                background: #ffcccc;
+                background-image: -webkit-radial-gradient(center ellipse, #ffcccc 0%, #ffcccc 4%, #bbbbbb 5%, #ffcccc 6%, #ffcccc 9%, #bbbbbb 10%, #ffcccc 11%, #ffcccc 14%, #bbbbbb 15%, #ffcccc 16%, #ffcccc 19%, #bbbbbb 20%, #ffcccc 21%, #ffcccc 24%, #bbbbbb 25%, #ffcccc 26%, #ffcccc 29%, #bbbbbb 30%, #ffcccc 31%, #ffcccc 34%, #bbbbbb 35%, #ffcccc 36%, #ffcccc 39%, #bbbbbb 40%, #ffcccc 41%, #ffcccc 44%, #bbbbbb 45%, #ffcccc 46%, #ffcccc 49%, #bbbbbb 50%, #ffcccc 51%, #ffcccc 54%, #bbbbbb 55%, #ffcccc 56%, #ffcccc 59%, #bbbbbb 60%, #ffcccc 61%, #ffcccc 64%, #bbbbbb 65%, #ffcccc 66%, #ffcccc 69%, #bbbbbb 70%, #ffcccc 71%, #ffcccc 74%, #bbbbbb 75%, #ffcccc 76%, #eeeeee 79%, #bbbbbb 80%, #ffcccc 81%, #ffcccc 84%, #bbbbbb 85%, #ffcccc 86%, #ffcccc 89%, #bbbbbb 90%, #ffcccc 91%, #ffcccc 94%, #bbbbbb 95%, #ffcccc 96%, #ffcccc 100%);
+                background-image: radial-gradient(ellipse at center, #ffcccc 0%, #ffcccc 4%, #bbbbbb 5%, #ffcccc 6%, #ffcccc 9%, #bbbbbb 10%, #ffcccc 11%, #ffcccc 14%, #bbbbbb 15%, #ffcccc 16%, #ffcccc 19%, #bbbbbb 20%, #ffcccc 21%, #ffcccc 24%, #bbbbbb 25%, #ffcccc 26%, #ffcccc 29%, #bbbbbb 30%, #ffcccc 31%, #ffcccc 34%, #bbbbbb 35%, #ffcccc 36%, #ffcccc 39%, #bbbbbb 40%, #ffcccc 41%, #ffcccc 44%, #bbbbbb 45%, #ffcccc 46%, #ffcccc 49%, #bbbbbb 50%, #ffcccc 51%, #ffcccc 54%, #bbbbbb 55%, #ffcccc 56%, #ffcccc 59%, #bbbbbb 60%, #ffcccc 61%, #ffcccc 64%, #bbbbbb 65%, #ffcccc 66%, #ffcccc 69%, #bbbbbb 70%, #ffcccc 71%, #ffcccc 74%, #bbbbbb 75%, #ffcccc 76%, #eeeeee 79%, #bbbbbb 80%, #ffcccc 81%, #ffcccc 84%, #bbbbbb 85%, #ffcccc 86%, #ffcccc 89%, #bbbbbb 90%, #ffcccc 91%, #ffcccc 94%, #bbbbbb 95%, #ffcccc 96%, #ffcccc 100%);
+            }
+            
+            .roll:before {
+                position: absolute;
+                content: "";
+                z-index: 1;
+                height: 100%;
+                width: 20%;
+                right: -10%;
+                border-radius: 50%;
+                -webkit-animation: anim-rollend 0.2s linear infinite;
+                animation: anim-rollend 0.2s linear infinite;
+                background-repeat: no-repeat;
+                box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+            
+            .roll:after {
+                position: absolute;
+                content: "";
+                z-index: 1;
+                height: 40%;
+                width: 8%;
+                top: 30%;
+                right: -4%;
+                border-radius: 50%;
+                background: #4d3319;
+                box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+            }
+            
+            .papers {
+                position: relative;
+                ;
+                z-index: 1;
+                width: 290px;
+                height: 360px;
+                top: 80px;
+                left: 36px;
+                overflow: hidden;
+            }
+            
+            .papers:after {
+                position: absolute;
+                content: "";
+                width: 100%;
+                height: 33%;
+                box-shadow: inset 0 30px 10px rgba(0, 0, 0, 0.2);
+            }
+            
+            .paper {
+                position: absolute;
+                width: 300px;
+                height: 240px;
+                box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+                text-align: center;
+                font: bold 15px/60px 'Roboto';
+                color: #bbb;
+                text-shadow: -1px -1px 1px rgba(255, 255, 255, 0.4), 1px 1px 1px rgba(0, 0, 0, 0.4);
+                -webkit-animation: move-paper 2s linear infinite;
+                animation: move-paper 2s linear infinite;
+            }
+            
+            .paper {
+                background-color: #ffcccc;
+            }
+            
+            .toiletroll .papers .paper:nth-of-type(2) {
+                -webkit-animation-delay: -0.66667s;
+                animation-delay: -0.66667s;
+            }
+            
+            .toiletroll .papers .paper:nth-of-type(3) {
+                -webkit-animation-delay: -1.33333s;
+                animation-delay: -1.33333s;
+            }
+            
+            @-webkit-keyframes move-paper {
+                0% {
+                    opacity: 1;
+                    -webkit-transform: translateY(480px);
+                    transform: translateY(480px);
+                }
+                50% {
+                    -webkit-transform: translateY(80px);
+                    transform: translateY(80px);
+                }
+                75% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                    -webkit-transform: translateY(-240px);
+                    transform: translateY(-240px);
+                }
+            }
+            
+            @keyframes move-paper {
+                0% {
+                    opacity: 1;
+                    -webkit-transform: translateY(480px);
+                    transform: translateY(480px);
+                }
+                50% {
+                    -webkit-transform: translateY(80px);
+                    transform: translateY(80px);
+                }
+                75% {
+                    opacity: 1;
+                }
+                100% {
+                    opacity: 0;
+                    -webkit-transform: translateY(-240px);
+                    transform: translateY(-240px);
+                }
+            }
+            
+            @-webkit-keyframes move-roll {
+                0% {
+                    background-position: 0px 0px;
+                }
+                100% {
+                    background-position: 0px 240px;
+                }
+            }
+            
+            @keyframes move-roll {
+                0% {
+                    background-position: 0px 0px;
+                }
+                100% {
+                    background-position: 0px 240px;
+                }
+            }
+            
+            @-webkit-keyframes anim-rollend {
+                0% {
+                    background-size: 100% 100%;
+                    background-position: 0 0;
+                }
+                50% {
+                    background-size: 98% 98%;
+                    background-position: 1px 1px;
+                }
+            }
+            
+            @keyframes anim-rollend {
+                0% {
+                    background-size: 100% 100%;
+                    background-position: 0 0;
+                }
+                50% {
+                    background-size: 98% 98%;
+                    background-position: 1px 1px;
+                }
+            }
+        </style>
 
-    <div class="card">
-      <div class="circle">T</div>
-      <h1>Donald Trump</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
-    </div>
+        <div class="card">
+            <div class="circle">T</div>
+            <h1>Donald Trump</h1>
+            <p>Donald John Trump is an American businessman, television personality, author, and politician. He is chairman of The Trump Organization, which is the principal holding company for his real estate ventures and other business interests.</p>
+        </div>
+        <div class="card">
+            <div class="wrapper" id="djt">
+                <div class="toiletroll">
+                    <div class="roll"></div>
+                    <div class="papers">
+                        <div class="paper"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/trumpet.png"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/crissxcross.png"></div>
+                        <div class="paper"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/trumpet.png"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/crissxcross.png"></div>
+                        <div class="paper"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/trumpet.png"><img src="https://raw.githubusercontent.com/the872/tvc2016/gh-pages/crissxcross.png"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-  </template>
+    </template>
 
-  <script>
+    <script>
+        Polymer({
 
-    Polymer({
+            is: 'my-trump'
 
-      is: 'my-trump'
-
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>
