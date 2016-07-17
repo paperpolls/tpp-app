@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       :host {
         display: block;
-        --app-primary-color: #4285f4;
+        --app-primary-color: #70543b;
         --app-secondary-color: black;
       }
 
@@ -73,11 +73,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <!-- Drawer content -->
       <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
+        <app-toolbar>Candidates</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="view1" href="/view1">View One</a>
-          <a name="view2" href="/view2">View Two</a>
-          <a name="view3" href="/view3">View Three</a>
+          <a name="trump" href="/trump">Donald Trump</a>
+          <a name="clinton" href="/clinton">Hillary Clinton</a>
+          <hr />
+          <a name="results" href="/results">Results</a>
+          <hr />
         </iron-selector>
       </app-drawer>
 
@@ -87,14 +89,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-header condenses reveals effects="waterfall">
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div title>My App</div>
+            <div title>Presidential Race 2016 | Toilet Paper Polls</div>
           </app-toolbar>
         </app-header>
 
         <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
+          <my-trump name="trump"></my-trump>
+          <my-clinton name="clinton"></my-clinton>
+          <my-results name="results"></my-results>
         </iron-pages>
 
       </app-header-layout>
@@ -124,7 +126,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       ],
 
       _routePageChanged: function(page) {
-        this.page = page || 'view1';
+        this.page = page || 'results';
       },
 
       _pageChanged: function(page) {
