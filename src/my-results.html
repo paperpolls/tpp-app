@@ -12,43 +12,81 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-results">
 
-  <template>
+    <template>
 
-    <style>
-      :host {
-        display: block;
-        padding: 10px;
-      }
-      .card {
-        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
-        padding: 16px;
-        margin: 24px;
-        border-radius: 5px;
-        background-color: #fff;
-        color: #757575;
-      }
-      h1 {
-        font-size: 22px;
-        margin: 16px 0;
-        color: #212121;
-      }
-    </style>
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
 
-    <div class="card">
-      <h1>Results</h1>
-      <p>Coming Soon!</p>
-      </div>
+            .card {
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                margin: 24px;
+                border-radius: 5px;
+                background-color: #fff;
+                color: #757575;
+            }
 
-  </template>
+            h1 {
+                font-size: 22px;
+                margin: 16px 0;
+                color: #212121;
+            }
 
-  <script>
+            b {
+                margin: auto;
+                display: block;
+                text-align: center;
+            }
+            img {
+                height: auto;
+                width: 100%;
+            }
+            #a, #b, #c {
+                width: calc(34% - 72px);
+                max-width: 50%;
+                max-height: inherit;
+                display: inline-block;
+                height: 150px;
+            }
+            #b {
+                margin: auto;
+            }
 
-    Polymer({
+        </style>
 
-      is: 'my-results'
+        <div class="card">
+            <div title><b>Presidential Primary 2016 🇺🇸</b></div>
+        </div>
 
-    });
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
 
-  </script>
+        <div class="card" id="a">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
+        <div class="card" id="b">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
+        <div class="card" id="c">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
+
+        <div class="card">
+
+        </div>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'my-results'
+
+        });
+    </script>
 
 </dom-module>

@@ -23,136 +23,135 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="my-app">
 
-  <template>
+    <template>
 
-    <style>
+        <style>
+            :host {
+                display: block;
+                --app-primary-color: #795548;
+                --app-secondary-color: black;
+            }
+            
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+            
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+            
+            .drawer-list {
+                margin: 0 20px;
+            }
+            
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 40px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+            
+            .drawer-list a.iron-selected {
+                background-color: #8D6E63;
+                font-weight: bold;
+                color: white;
+                box-shadow: -2px 2px 2px rgba(0, 0, 0, .2);
+            }
+            
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+            
+            app-toolbar {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+            
+            app-header-layout {
+                background-color: #8D6E63;
+            }
+            
+            u {
+                right: 34px;
+                position: absolute;
+                top: 16px;
+            }
+            
+            app-toolbar img {
+                height: 36px;
+                width: auto;
+                padding-right: 10px;
+            }
+        </style>
 
-      :host {
-        display: block;
-        --app-primary-color: #795548;
-        --app-secondary-color: black;
-      }
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
-      app-header {
-        background-color: var(--app-primary-color);
-        color: #fff;
-      }
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
+        <app-drawer-layout fullbleed>
 
-      .drawer-list {
-        margin: 0 20px;
-      }
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        line-height: 40px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-      }
-      .drawer-list a.iron-selected {
-        background-color: #8D6E63;
-        font-weight: bold;
-        color:white;
-        box-shadow: -2px 2px 2px rgba(0, 0, 0, .2);
-      }
-      .drawer-list a.subroute {
-        padding-left: 32px;
-      }
-      app-toolbar{
-        background-color: var(--app-primary-color);
-        color:#fff;
-      }
-      app-header-layout {
-        background-color: #8D6E63;
-      }
-      u {
-        right: 34px;
-        position: absolute;
-        top: 16px;
-      }
-      app-toolbar img {
-        height: 36px;
-        width: auto;
-        padding-right: 10px;
-      }
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar><img src="https://raw.githubusercontent.com/the872/tpp-app/master/images/tpp.png" /><b>Toilet Paper Polls</b></app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="trump" href="/trump">Donald Trump</a>
+                    <a name="clinton" href="/clinton">Hillary Clinton</a>
+                    <a name="results" href="/results">Results</a>
+                </iron-selector>
+            </app-drawer>
 
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
 
-    </style>
+                <app-header condenses reveals effects="waterfall">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                    </app-toolbar>
+                </app-header>
 
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+                <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                    <my-trump name="trump"></my-trump>
+                    <my-clinton name="clinton"></my-clinton>
+                    <my-results name="results"></my-results>
+                </iron-pages>
 
-    <app-drawer-layout fullbleed>
+            </app-header-layout>
 
-      <!-- Drawer content -->
-      <app-drawer>
-        <app-toolbar><img src="http://i.imgur.com/swsiH13.png"/><b>Toilet Paper Polls</b></app-toolbar>
-        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-          <a name="trump" href="/trump">Donald Trump</a>
-          <a name="clinton" href="/clinton">Hillary Clinton</a>
-          <a name="results" href="/results">Results</a>
-        </iron-selector>
-      </app-drawer>
+        </app-drawer-layout>
 
-      <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+    </template>
 
-        <app-header condenses reveals effects="waterfall">
-          <app-toolbar>
-            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-          </app-toolbar>
-        </app-header>
+    <script>
+        Polymer({
 
-        <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
-          <my-trump name="trump"></my-trump>
-          <my-clinton name="clinton"></my-clinton>
-          <my-results name="results"></my-results>
-        </iron-pages>
+            is: 'my-app',
 
-      </app-header-layout>
+            properties: {
 
-    </app-drawer-layout>
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                },
 
-  </template>
+            },
 
-  <script>
+            observers: [
+                '_routePageChanged(routeData.page)'
+            ],
 
-    Polymer({
+            _routePageChanged: function(page) {
+                this.page = page || 'results';
+            },
 
-      is: 'my-app',
+            _pageChanged: function(page) {
+                // load page import on demand.
+                this.importHref(
+                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+            }
 
-      properties: {
-
-        page: {
-          type: String,
-          reflectToAttribute: true,
-          observer: '_pageChanged'
-        },
-
-      },
-
-      observers: [
-        '_routePageChanged(routeData.page)'
-      ],
-
-      _routePageChanged: function(page) {
-        this.page = page || 'results';
-      },
-
-      _pageChanged: function(page) {
-        // load page import on demand.
-        this.importHref(
-          this.resolveUrl('my-' + page + '.html'), null, null, true);
-      }
-
-    });
-
-  </script>
+        });
+    </script>
 
 </dom-module>
