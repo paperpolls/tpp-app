@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="https://raw.githubusercontent.com/rupl/flip-card/master/flip-card.html">
+<link href="https://raw.githubusercontent.com/PolymerElements/paper-icon-button/master/paper-icon-button.html" rel="import">
 
 <dom-module id="my-trump">
 
@@ -47,6 +49,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 font-size: 22px;
                 margin: 16px 0;
                 color: #212121;
+            }
+
+            flip-card {
+                width: calc(100% - 54px);
+                height: 200px;
+                color: #fff;
+                text-align: center;
+                text-shadow: -1px -1px rgba(0, 0, 0, 0.4);
+                border-radius: 5px;
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                margin: 24px;
+                border-radius: 5px;
+                text-shadow: none;
+            }
+
+            flip-card front {
+                background: #fff;
+                color: black;
+                padding-top: 1em;
+                border-radius: 5px;
+            }
+
+            flip-card back {
+                background: #fff;
+                color: black;
+                padding-top: 1em;
+                border-radius: 5px;
             }
 
             @import url(http://fonts.googleapis.com/css?family=Roboto:400);
@@ -274,15 +304,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: block;
                 text-align: center;
             }
+
+            front label,
+            input {
+                position: absolute;
+                right: 1em;
+                bottom: 1em;
+            }
+
+            back label,
+            input {
+                position: absolute;
+                right: 1em;
+                bottom: 1em;
+            }
+
+            label {
+                display: inline;
+                padding-right: 16px;
+                padding-top: 16px;
+                padding-bottom: -10px;
+            }
         </style>
         <div class="card">
             <div title><b>Presidential Primary 2016 🇺🇸</b></div>
         </div>
-        <div class="card">
-            <div class="circle">T</div>
-            <h1>Donald Trump</h1>
-            <p>Donald John Trump is an American businessman, television personality, author, and politician. He is chairman of The Trump Organization, which is the principal holding company for his real estate ventures and other business interests.</p>
-        </div>
+
+        <flip-card nohover flipped="{{flipped}}">
+
+            <front>
+                <div class="circle">T</div>
+                <h1>Donald Trump</h1>
+                <p>Donald John Trump is an American businessman, television personality, author, and politician. He is chairman of The Trump Organization, which is the principal holding company for his real estate ventures and other business interests.</p>
+                <input type="checkbox" checked="{{flipped::change}}">
+            </front>
+
+            <back>Heyo!
+                <input type="checkbox" checked="{{flipped::change}}">
+            </back>
+        </flip-card>
+    
         <div class="card">
             <div class="wrapper" id="djt">
                 <div class="toiletroll">
