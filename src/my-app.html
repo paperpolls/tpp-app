@@ -72,6 +72,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         position: absolute;
         top: 16px;
       }
+      app-toolbar img {
+        height: 36px;
+        width: auto;
+        padding-right: 10px;
+      }
 
 
     </style>
@@ -87,7 +92,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
       <!-- Drawer content -->
       <app-drawer>
-        <app-toolbar><img src="images/tpp.svg" /><b>🚽 Toilet Paper Polls</b></app-toolbar>
+        <app-toolbar><img src="http://i.imgur.com/swsiH13.png"/><b>Toilet Paper Polls</b></app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="trump" href="/trump">Donald Trump</a>
           <a name="clinton" href="/clinton">Hillary Clinton</a>
