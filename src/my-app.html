@@ -48,7 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .drawer-list a {
                 display: block;
                 padding: 0 16px;
-                line-height: 40px;
+                line-height: 64px;
                 text-decoration: none;
                 color: var(--app-secondary-color);
             }
@@ -58,6 +58,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 font-weight: bold;
                 color: white;
                 box-shadow: -2px 2px 2px rgba(0, 0, 0, .2);
+                padding: 0 24px;
             }
 
             .drawer-list a.subroute {
@@ -78,7 +79,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 position: absolute;
                 top: 16px;
             }
-
             app-toolbar img {
                 height: 36px;
                 width: auto;
@@ -90,14 +90,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
 
         <app-drawer-layout fullbleed>
-
             <!-- Drawer content -->
             <app-drawer>
                 <app-toolbar><img src="https://raw.githubusercontent.com/the872/tpp-app/master/images/tpp.png" /><b>Toilet Paper Polls</b></app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
-                    <a name="trump" href="/trump">Donald Trump</a>
-                    <a name="clinton" href="/clinton">Hillary Clinton</a>
-                    <a name="results" href="/results">Results</a>
+                    <hr>
+                    <a name="trump" href="/trump">◯ Donald Trump</a>
+                    <a name="clinton" href="/clinton">◯ Hillary Clinton</a>
+                    <a name="results" href="/results">◯ Results</a>
+                    <hr>
                 </iron-selector>
             </app-drawer>
 
