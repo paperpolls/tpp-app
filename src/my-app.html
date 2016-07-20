@@ -41,10 +41,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 --paper-icon-button-ink-color: white;
             }
 
-            .drawer-list {
-                margin: 0 20px;
-            }
-
             .drawer-list a {
                 display: block;
                 padding: 0 16px;
@@ -80,10 +76,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 top: 16px;
             }
             app-toolbar img {
-                height: 36px;
+                height: 40px;
                 width: auto;
-                padding-right: 10px;
+                padding-right: 12px;
             }
+            span {
+                padding-right: 12px;
+            }
+
+
         </style>
 
         <app-location route="{{route}}"></app-location>
@@ -95,9 +96,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <app-toolbar><img src="https://raw.githubusercontent.com/the872/tpp-app/master/images/tpp.png" /><b>Toilet Paper Polls</b></app-toolbar>
                 <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
                     <hr>
-                    <a name="trump" href="/trump">◯ Donald Trump</a>
-                    <a name="clinton" href="/clinton">◯ Hillary Clinton</a>
-                    <a name="results" href="/results">◯ Results</a>
+                    <a name="trump" href="/trump"><span>◯</span> Donald Trump </a>
+                    <a name="clinton" href="/clinton"><span>◯</span> Hillary Clinton</a>
+                    <a name="results" href="/results"><span>◯</span> Results</a>
                     <hr>
                 </iron-selector>
             </app-drawer>
