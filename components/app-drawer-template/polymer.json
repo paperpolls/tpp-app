@@ -1,0 +1,9 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/my-app.html",
+  "fragments": [
+    "src/my-trump.html",
+    "src/my-clinton.html",
+    "src/my-results.html"
+  ]
+}

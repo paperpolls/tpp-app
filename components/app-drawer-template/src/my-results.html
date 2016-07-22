@@ -1,0 +1,123 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="https://raw.githubusercontent.com/rupl/flip-card/master/flip-card.html">
+
+<dom-module id="my-results">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                padding: 10px;
+            }
+
+            .card,
+            flip-card {
+                box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+                padding: 16px;
+                margin: 24px;
+                border-radius: 5px;
+                background-color: #fff;
+                color: #757575;
+            }
+
+            h1 {
+                font-size: 22px;
+                margin: 16px 0;
+                color: #212121;
+            }
+
+            b {
+                margin: auto;
+                display: block;
+                text-align: center;
+            }
+
+            img {
+                height: auto;
+                width: 100%;
+            }
+
+            b {
+                margin: auto;
+                font-size: 24px;
+                color: #fff;
+                display: block;
+                text-align: center;
+            }
+
+            #t0, #sh {
+                background-color: #AE9D98;
+                border-radius: 5px;
+            }
+
+            flip-card front {
+                background: #888;
+                padding-top: 1em;
+                border-radius: 5px;
+            }
+
+            flip-card back {
+                background: #444;
+                padding-top: 1em;
+                border-radius: 5px;
+            }
+
+            flip-card {
+                width: calc(100% - 54px);
+                height: 200px;
+                color: #fff;
+                font-size: 3em;
+                text-align: center;
+                text-shadow: -1px -1px rgba(0, 0, 0, 0.4);
+                border-radius: 5px;
+            }
+            #sh{
+                color:white;
+                float:right;
+            }
+        </style>
+        <div class="card" id="t0">
+            <div title><b>🇺🇸 Presidential Primary 2016 🇺🇸</b></div>
+        </div>
+
+        <div class="card" id="t1" style="text-align:center;">
+            <h3>Coming Soon!</h3>
+            <p>
+                The graphs below are placeholders.
+            </p>
+        </div>
+
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
+
+        <div class="card">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/AB_de_Villiers_ODI_batting_graph_with_10-innings_average.svg" />
+        </div>
+
+        <div class="card" id="sh">
+            © 2016 Toilet Paper Polls
+        </div>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'my-results'
+
+        });
+    </script>
+
+</dom-module>

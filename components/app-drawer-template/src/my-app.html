@@ -1,0 +1,157 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<link rel="import" href="my-icons.html">
+
+<dom-module id="my-app">
+
+    <template>
+
+        <style>
+            :host {
+                display: block;
+                --app-primary-color: #795548;
+                --app-secondary-color: #987B69;
+            }
+
+            app-header {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+
+            app-header paper-icon-button {
+                --paper-icon-button-ink-color: white;
+            }
+
+            .drawer-list a {
+                display: block;
+                padding: 0 16px;
+                line-height: 64px;
+                text-decoration: none;
+                color: var(--app-secondary-color);
+            }
+
+            .drawer-list a.iron-selected {
+                background-color: #8D6E63;
+                font-weight: bold;
+                color: white;
+                box-shadow: -2px 2px 2px rgba(0, 0, 0, .2);
+                padding: 0 24px;
+            }
+
+            .drawer-list a.subroute {
+                padding-left: 32px;
+            }
+
+            app-toolbar {
+                background-color: var(--app-primary-color);
+                color: #fff;
+            }
+
+            app-header-layout {
+                background-color: #8D6E63;
+            }
+
+            u {
+                right: 34px;
+                position: absolute;
+                top: 16px;
+            }
+            app-toolbar img {
+                height: 40px;
+                width: auto;
+                padding-right: 12px;
+            }
+            span {
+                padding-right: 12px;
+            }
+
+
+        </style>
+
+        <app-location route="{{route}}"></app-location>
+        <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}"></app-route>
+
+        <app-drawer-layout fullbleed>
+            <!-- Drawer content -->
+            <app-drawer>
+                <app-toolbar><img src="https://raw.githubusercontent.com/the872/tpp-app/master/images/tpp.png" /><b>Toilet Paper Polls</b></app-toolbar>
+                <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+                    <a name="trump" href="/trump"><span>◯</span> Donald Trump </a>
+                    <a name="clinton" href="/clinton"><span>◯</span> Hillary Clinton</a>
+                    <a name="results" href="/results"><span>◯</span> Results</a>
+                </iron-selector>
+            </app-drawer>
+
+            <!-- Main content -->
+            <app-header-layout has-scrolling-region>
+
+                <app-header condenses reveals effects="waterfall">
+                    <app-toolbar>
+                        <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+                    </app-toolbar>
+                </app-header>
+
+                <iron-pages role="main" selected="[[page]]" attr-for-selected="name">
+                    <my-trump name="trump"></my-trump>
+                    <my-clinton name="clinton"></my-clinton>
+                    <my-results name="results"></my-results>
+                </iron-pages>
+
+            </app-header-layout>
+
+        </app-drawer-layout>
+
+    </template>
+
+    <script>
+        Polymer({
+
+            is: 'my-app',
+
+            properties: {
+
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged'
+                },
+
+            },
+
+            observers: [
+                '_routePageChanged(routeData.page)'
+            ],
+
+            _routePageChanged: function(page) {
+                this.page = page || 'results';
+            },
+
+            _pageChanged: function(page) {
+                // load page import on demand.
+                this.importHref(
+                    this.resolveUrl('my-' + page + '.html'), null, null, true);
+            }
+
+        });
+    </script>
+
+</dom-module>
